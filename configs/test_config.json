@@ -1,0 +1,4 @@
+{
+  "env": "testing",
+  "db_url": "localhost:5432/testdb"
+}
