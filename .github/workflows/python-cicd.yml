@@ -22,7 +22,7 @@ jobs:
           python-version: '3.11'
 
       - name: Run app with config based on branch
-        run: python appnag.py $GITHUB_REF_NAME
+        run: python -u appnag.py $GITHUB_REF_NAME
 
   deploy-test:
     name: Deploy to Test Environment
