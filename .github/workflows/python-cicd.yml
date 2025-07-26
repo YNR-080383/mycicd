@@ -1,0 +1,45 @@
+name: Python CI/CD Pipeline (No Tests)
+
+on:
+  push:
+    branches:
+      - dev
+      - test
+      - main
+
+jobs:
+  run-script:
+    name: Run Script with Branch Config
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Run app with config based on branch
+        run: python app.py $GITHUB_REF_NAME
+
+  deploy-test:
+    name: Deploy to Test Environment
+    needs: run-script
+    if: github.ref == 'refs/heads/test'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Simulate Deployment to TEST
+        run: echo "Deploying to TEST environment..."
+
+  deploy-prod:
+    name: Deploy to Production
+    needs: run-script
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Simulate Deployment to PRODUCTION
+        run: echo "Deploying to PRODUCTION environment..."

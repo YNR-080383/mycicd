@@ -1,0 +1,4 @@
+{
+  "env": "production",
+  "db_url": "prod-db.mycompany.com:5432/proddb"
+}

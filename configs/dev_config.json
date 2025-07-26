@@ -1,0 +1,4 @@
+{
+  "env": "development",
+  "db_url": "localhost:5432/devdb"
+}
